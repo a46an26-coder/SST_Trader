@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""SST TRADER v18 — STABLE REBUILD"""
+"""SST TRADER v19 — STABLE REBUILD"""
 import os, logging, requests, random, asyncio, threading, time, json as json_module
 from datetime import datetime, timedelta
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup, Bot
@@ -126,7 +126,7 @@ async def show_main(update,uid,u):
         return
     s=STRATEGIES.get(u['strategy'],STRATEGIES['dca'])
     wr=(u['wins']/u['trades']*100) if u['trades']>0 else 0
-    text=f"🚀 *SST TRADER v18*\n\n👤 {u['name']} | 🏆 Lv.{u['level']}\n🪙 {u['coins']:,.0f} SST | ⏰ {h:.0f}ч\n💵 {u['profit']:+,.0f} | {s['name']}\n📊 {u['trades']} сделок | Win:{wr:.0f}%"
+    text=f"🚀 *SST TRADER v19*\n\n👤 {u['name']} | 🏆 Lv.{u['level']}\n🪙 {u['coins']:,.0f} SST | ⏰ {h:.0f}ч\n💵 {u['profit']:+,.0f} | {s['name']}\n📊 {u['trades']} сделок | Win:{wr:.0f}%"
     await update.message.reply_text(text,parse_mode=ParseMode.MARKDOWN,reply_markup=menu())
 
 async def handle_msg(update:Update,context:ContextTypes.DEFAULT_TYPE):
@@ -263,7 +263,7 @@ def auto_trade():
     threading.Thread(target=run,daemon=True).start()
 
 def main():
-    logger.info("🚀 SST TRADER v18 STABLE")
+    logger.info("🚀 SST TRADER v19 STABLE")
     auto_trade()
     app=Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler('start',start_cmd))
